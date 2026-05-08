@@ -42,15 +42,20 @@ export default function Cell({ piece, size, onPress, isSelected, isHit, isHint }
 
   let pieceColor = PIECE_COLORS.text;
   if (piece?.type === 'SOURCE' && piece.color) pieceColor = BEAM_COLORS[piece.color];
-  if (piece?.type === 'TARGET' && piece.color) pieceColor = isHit ? BEAM_COLORS[piece.color] : PIECE_COLORS.textDim;
+  if (piece?.type === 'TARGET' && piece.color) {
+    const c = BEAM_COLORS[piece.color];
+    pieceColor = isHit ? c : `${c}70`;
+  }
   if (piece?.type === 'COLORFILTER' && piece.color) pieceColor = BEAM_COLORS[piece.color];
+
+  const targetColor = piece?.type === 'TARGET' && piece.color ? BEAM_COLORS[piece.color] : null;
 
   const borderColor = isHint
     ? HINT_COLOR
     : isSelected
     ? '#FFFFFF'
-    : piece?.type === 'TARGET' && isHit
-    ? (piece.color ? BEAM_COLORS[piece.color] : PIECE_COLORS.solved)
+    : targetColor
+    ? (isHit ? targetColor : `${targetColor}45`)
     : PIECE_COLORS.gridLine;
 
   const borderWidth = isSelected || isHint ? 2 : 1;
@@ -78,23 +83,25 @@ export default function Cell({ piece, size, onPress, isSelected, isHit, isHint }
           ]}
         />
       )}
-      {piece && (
-        <Text style={[styles.pieceText, { color: pieceColor, fontSize: size * 0.4 }]}>
-          {pieceLabel(piece)}
-        </Text>
-      )}
-      {piece?.type === 'TARGET' && isHit && (
+      {piece?.type === 'TARGET' && targetColor && (
         <View
           style={[
-            styles.glow,
+            styles.targetDot,
             {
-              width: size * 0.7,
-              height: size * 0.7,
-              borderRadius: size * 0.35,
-              backgroundColor: piece.color ? `${BEAM_COLORS[piece.color]}30` : '#ffffff20',
+              width: size * 0.42,
+              height: size * 0.42,
+              borderRadius: size * 0.21,
+              backgroundColor: isHit ? `${targetColor}50` : `${targetColor}28`,
+              borderWidth: isHit ? 2 : 1.5,
+              borderColor: isHit ? targetColor : `${targetColor}70`,
             },
           ]}
         />
+      )}
+      {piece && (
+        <Text style={[styles.pieceText, { color: pieceColor, fontSize: size * 0.38 }]}>
+          {pieceLabel(piece)}
+        </Text>
       )}
     </TouchableOpacity>
   );
@@ -114,6 +121,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   glow: {
+    position: 'absolute',
+  },
+  targetDot: {
     position: 'absolute',
   },
 });
