@@ -64,7 +64,7 @@ export const LEVELS: Level[] = [
   {
     id: 'tutorial-4',
     name: 'Crossroads',
-    description: 'One beam, two targets. A splitter can send light in multiple directions at once.',
+    description: 'One beam, two targets. A splitter sends light in three directions at once.',
     rows: 6,
     cols: 6,
     grid: g(6, 6, [
@@ -74,6 +74,103 @@ export const LEVELS: Level[] = [
     ]),
     hand: [
       { type: 'SPLITTER' },
+    ],
+  },
+  {
+    id: 'tutorial-5',
+    name: 'New Angle',
+    description: 'The beam starts going down. Find where to place each mirror to reach the target.',
+    rows: 7,
+    cols: 7,
+    grid: g(7, 7, [
+      { r: 0, c: 6, piece: { type: 'SOURCE', color: 'BLUE', direction: 'DOWN', fixed: true } },
+      { r: 0, c: 0, piece: { type: 'TARGET', color: 'BLUE', fixed: true } },
+    ]),
+    hand: [
+      { type: 'MIRROR', mirror: 'FORWARD' },
+      { type: 'MIRROR', mirror: 'BACK' },
+    ],
+  },
+  {
+    id: 'tutorial-6',
+    name: 'Split and Route',
+    description: 'One branch of the splitter goes straight to its target — the other needs help.',
+    rows: 7,
+    cols: 7,
+    grid: g(7, 7, [
+      { r: 3, c: 0, piece: { type: 'SOURCE', color: 'GREEN', direction: 'RIGHT', fixed: true } },
+      { r: 0, c: 3, piece: { type: 'TARGET', color: 'GREEN', fixed: true } },
+      { r: 6, c: 6, piece: { type: 'TARGET', color: 'GREEN', fixed: true } },
+    ]),
+    hand: [
+      { type: 'SPLITTER' },
+      { type: 'MIRROR', mirror: 'BACK' },
+    ],
+  },
+  {
+    id: 'tutorial-7',
+    name: 'Reverse',
+    description: 'This time the beam fires to the left. Think about how each mirror deflects it.',
+    rows: 7,
+    cols: 7,
+    grid: g(7, 7, [
+      { r: 0, c: 3, piece: { type: 'SOURCE', color: 'RED', direction: 'LEFT', fixed: true } },
+      { r: 3, c: 6, piece: { type: 'TARGET', color: 'RED', fixed: true } },
+    ]),
+    hand: [
+      { type: 'MIRROR', mirror: 'FORWARD' },
+      { type: 'MIRROR', mirror: 'BACK' },
+    ],
+  },
+  {
+    id: 'tutorial-8',
+    name: 'Three-Way Split',
+    description: 'The splitter fires three ways. Route each branch to its own target.',
+    rows: 8,
+    cols: 8,
+    grid: g(8, 8, [
+      { r: 4, c: 0, piece: { type: 'SOURCE', color: 'GREEN', direction: 'RIGHT', fixed: true } },
+      { r: 0, c: 7, piece: { type: 'TARGET', color: 'GREEN', fixed: true } },
+      { r: 4, c: 7, piece: { type: 'TARGET', color: 'GREEN', fixed: true } },
+      { r: 7, c: 7, piece: { type: 'TARGET', color: 'GREEN', fixed: true } },
+    ]),
+    hand: [
+      { type: 'SPLITTER' },
+      { type: 'MIRROR', mirror: 'FORWARD' },
+      { type: 'MIRROR', mirror: 'BACK' },
+    ],
+  },
+  {
+    id: 'tutorial-9',
+    name: 'Upward',
+    description: 'The beam rises. Route it left, then back down to the target in the corner.',
+    rows: 7,
+    cols: 7,
+    grid: g(7, 7, [
+      { r: 6, c: 3, piece: { type: 'SOURCE', color: 'BLUE', direction: 'UP', fixed: true } },
+      { r: 6, c: 0, piece: { type: 'TARGET', color: 'BLUE', fixed: true } },
+    ]),
+    hand: [
+      { type: 'MIRROR', mirror: 'BACK' },
+      { type: 'MIRROR', mirror: 'FORWARD' },
+    ],
+  },
+  {
+    id: 'tutorial-10',
+    name: 'Grand Tour',
+    description: 'A leftward beam, a splitter, three targets in three directions. Use everything you know.',
+    rows: 8,
+    cols: 9,
+    grid: g(8, 9, [
+      { r: 4, c: 8, piece: { type: 'SOURCE', color: 'RED', direction: 'LEFT', fixed: true } },
+      { r: 0, c: 8, piece: { type: 'TARGET', color: 'RED', fixed: true } },
+      { r: 7, c: 8, piece: { type: 'TARGET', color: 'RED', fixed: true } },
+      { r: 4, c: 0, piece: { type: 'TARGET', color: 'RED', fixed: true } },
+    ]),
+    hand: [
+      { type: 'SPLITTER' },
+      { type: 'MIRROR', mirror: 'FORWARD' },
+      { type: 'MIRROR', mirror: 'BACK' },
     ],
   },
   // ── COLORS ────────────────────────────────────────────────────────────────
