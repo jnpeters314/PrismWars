@@ -17,6 +17,7 @@ function g(rows: number, cols: number, pieces: Array<{ r: number; c: number; pie
 }
 
 export const LEVELS: Level[] = [
+  // ── TUTORIAL ──────────────────────────────────────────────────────────────
   {
     id: 'tutorial-1',
     name: 'First Light',
@@ -33,40 +34,69 @@ export const LEVELS: Level[] = [
   },
   {
     id: 'tutorial-2',
-    name: 'Bounce',
-    description: 'Use two mirrors to reach the target in the corner.',
-    rows: 6,
-    cols: 6,
-    grid: g(6, 6, [
-      { r: 5, c: 0, piece: { type: 'SOURCE', color: 'BLUE', direction: 'RIGHT', fixed: true } },
-      { r: 0, c: 5, piece: { type: 'TARGET', color: 'BLUE', fixed: true } },
+    name: 'Sharp Corner',
+    description: 'A different mirror makes a very different turn. Get the beam to the target.',
+    rows: 5,
+    cols: 5,
+    grid: g(5, 5, [
+      { r: 0, c: 0, piece: { type: 'SOURCE', color: 'BLUE', direction: 'DOWN', fixed: true } },
+      { r: 4, c: 4, piece: { type: 'TARGET', color: 'BLUE', fixed: true } },
     ]),
     hand: [
-      { type: 'MIRROR', mirror: 'FORWARD' },
       { type: 'MIRROR', mirror: 'BACK' },
     ],
   },
   {
     id: 'tutorial-3',
-    name: 'Split Decision',
-    description: 'Hit both targets — you have a splitter and mirrors.',
+    name: 'Double Bounce',
+    description: 'Chain two mirrors together to send the beam all the way around.',
     rows: 6,
-    cols: 7,
-    grid: g(6, 7, [
+    cols: 6,
+    grid: g(6, 6, [
+      { r: 0, c: 0, piece: { type: 'SOURCE', color: 'RED', direction: 'DOWN', fixed: true } },
+      { r: 0, c: 5, piece: { type: 'TARGET', color: 'RED', fixed: true } },
+    ]),
+    hand: [
+      { type: 'MIRROR', mirror: 'BACK' },
+      { type: 'MIRROR', mirror: 'FORWARD' },
+    ],
+  },
+  {
+    id: 'tutorial-4',
+    name: 'Crossroads',
+    description: 'One beam, two targets. A splitter can send light in multiple directions at once.',
+    rows: 6,
+    cols: 6,
+    grid: g(6, 6, [
       { r: 3, c: 0, piece: { type: 'SOURCE', color: 'GREEN', direction: 'RIGHT', fixed: true } },
       { r: 0, c: 3, piece: { type: 'TARGET', color: 'GREEN', fixed: true } },
-      { r: 5, c: 6, piece: { type: 'TARGET', color: 'GREEN', fixed: true } },
+      { r: 5, c: 3, piece: { type: 'TARGET', color: 'GREEN', fixed: true } },
     ]),
     hand: [
       { type: 'SPLITTER' },
-      { type: 'MIRROR', mirror: 'FORWARD' },
+    ],
+  },
+  // ── COLORS ────────────────────────────────────────────────────────────────
+  {
+    id: 'colors-1',
+    name: 'Color Match',
+    description: 'Two beams, two targets — but only the right color lights a target.',
+    rows: 6,
+    cols: 6,
+    grid: g(6, 6, [
+      { r: 0, c: 3, piece: { type: 'SOURCE', color: 'RED', direction: 'DOWN', fixed: true } },
+      { r: 3, c: 0, piece: { type: 'SOURCE', color: 'GREEN', direction: 'RIGHT', fixed: true } },
+      { r: 3, c: 5, piece: { type: 'TARGET', color: 'RED', fixed: true } },
+      { r: 5, c: 3, piece: { type: 'TARGET', color: 'GREEN', fixed: true } },
+    ]),
+    hand: [
       { type: 'MIRROR', mirror: 'BACK' },
     ],
   },
   {
-    id: 'colors-1',
-    name: 'Mixing It Up',
-    description: 'A white beam hits a prism — route each color to its matching target.',
+    id: 'colors-2',
+    name: 'The Prism',
+    description: 'A prism splits white light into red, green, and blue. Route each color to its target.',
     rows: 7,
     cols: 7,
     grid: g(7, 7, [
@@ -79,25 +109,37 @@ export const LEVELS: Level[] = [
     hand: [
       { type: 'MIRROR', mirror: 'FORWARD' },
       { type: 'MIRROR', mirror: 'BACK' },
-      { type: 'MIRROR', mirror: 'FORWARD' },
     ],
   },
   {
-    id: 'colors-2',
+    id: 'colors-3',
     name: 'Color Fusion',
-    description: 'Combine red and green beams to make yellow and hit the target.',
+    description: 'Two beams meeting at the same target mix into a new color.',
     rows: 7,
     cols: 8,
     grid: g(7, 8, [
-      { r: 0, c: 2, piece: { type: 'SOURCE', color: 'RED', direction: 'DOWN', fixed: true } },
-      { r: 6, c: 5, piece: { type: 'SOURCE', color: 'GREEN', direction: 'UP', fixed: true } },
-      { r: 3, c: 7, piece: { type: 'TARGET', color: 'YELLOW', fixed: true } },
+      { r: 3, c: 0, piece: { type: 'SOURCE', color: 'RED', direction: 'RIGHT', fixed: true } },
+      { r: 0, c: 4, piece: { type: 'SOURCE', color: 'GREEN', direction: 'DOWN', fixed: true } },
+      { r: 6, c: 7, piece: { type: 'TARGET', color: 'YELLOW', fixed: true } },
     ]),
     hand: [
-      { type: 'MIRROR', mirror: 'FORWARD' },
       { type: 'MIRROR', mirror: 'BACK' },
-      { type: 'MIRROR', mirror: 'FORWARD' },
       { type: 'MIRROR', mirror: 'BACK' },
+    ],
+  },
+  {
+    id: 'colors-4',
+    name: 'Filter Out',
+    description: 'White light contains all colors. A color filter extracts just one.',
+    rows: 4,
+    cols: 7,
+    grid: g(4, 7, [
+      { r: 2, c: 0, piece: { type: 'SOURCE', color: 'WHITE', direction: 'RIGHT', fixed: true } },
+      { r: 0, c: 6, piece: { type: 'TARGET', color: 'RED', fixed: true } },
+      { r: 2, c: 6, piece: { type: 'MIRROR', mirror: 'FORWARD', fixed: true } },
+    ]),
+    hand: [
+      { type: 'COLORFILTER', color: 'RED' },
     ],
   },
   {
