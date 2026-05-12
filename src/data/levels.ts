@@ -431,6 +431,25 @@ export const LEVELS: Level[] = [
     ],
   },
   {
+    id: 'strategy-5',
+    name: 'Double Mix',
+    description: 'Green must split to feed two different mixing targets. One partner comes from above, one from below — find where to branch.',
+    rows: 9,
+    cols: 9,
+    grid: g(9, 9, [
+      { r: 4, c: 0, piece: { type: 'SOURCE', color: 'GREEN', direction: 'RIGHT', fixed: true } },
+      { r: 0, c: 0, piece: { type: 'SOURCE', color: 'RED',   direction: 'RIGHT', fixed: true } },
+      { r: 8, c: 0, piece: { type: 'SOURCE', color: 'BLUE',  direction: 'RIGHT', fixed: true } },
+      { r: 2, c: 6, piece: { type: 'TARGET', color: 'YELLOW', fixed: true } },
+      { r: 8, c: 4, piece: { type: 'TARGET', color: 'CYAN',   fixed: true } },
+    ]),
+    hand: [
+      { type: 'SPLITTER' },
+      { type: 'MIRROR', mirror: 'FORWARD' },
+      { type: 'MIRROR', mirror: 'BACK' },
+    ],
+  },
+  {
     id: 'master-1',
     name: 'Laser Labyrinth',
     description: 'Blockers are in your way. Find the path through the maze.',
