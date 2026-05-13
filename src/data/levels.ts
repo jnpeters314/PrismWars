@@ -530,6 +530,25 @@ export const LEVELS: Level[] = [
     ],
   },
   {
+    id: 'strategy-10',
+    name: 'Grand Strategy',
+    description: 'White splits into a spectrum, then the spectrum splits again. Place the prism first, then the splitter — and route each arm to its target.',
+    rows: 9,
+    cols: 9,
+    grid: g(9, 9, [
+      { r: 4, c: 0, piece: { type: 'SOURCE', color: 'WHITE', direction: 'RIGHT', fixed: true } },
+      { r: 4, c: 8, piece: { type: 'TARGET', color: 'GREEN',  fixed: true } },
+      { r: 0, c: 6, piece: { type: 'TARGET', color: 'YELLOW', fixed: true } },
+      { r: 8, c: 6, piece: { type: 'TARGET', color: 'CYAN',   fixed: true } },
+    ]),
+    hand: [
+      { type: 'PRISM' },
+      { type: 'SPLITTER' },
+      { type: 'MIRROR', mirror: 'FORWARD' },
+      { type: 'MIRROR', mirror: 'BACK' },
+    ],
+  },
+  {
     id: 'master-1',
     name: 'Laser Labyrinth',
     description: 'Blockers are in your way. Find the path through the maze.',
