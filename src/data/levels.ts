@@ -450,6 +450,26 @@ export const LEVELS: Level[] = [
     ],
   },
   {
+    id: 'strategy-6',
+    name: 'White Tap',
+    description: 'One WHITE beam feeds everything. A fixed filter taps CYAN from above — you supply the splitter and route the rest.',
+    rows: 8,
+    cols: 8,
+    grid: g(8, 8, [
+      { r: 3, c: 0, piece: { type: 'SOURCE', color: 'WHITE', direction: 'RIGHT', fixed: true } },
+      { r: 1, c: 4, piece: { type: 'COLORFILTER', color: 'CYAN',    fixed: true } },
+      { r: 0, c: 4, piece: { type: 'TARGET',      color: 'CYAN',    fixed: true } },
+      { r: 3, c: 7, piece: { type: 'TARGET',      color: 'YELLOW',  fixed: true } },
+      { r: 7, c: 6, piece: { type: 'TARGET',      color: 'MAGENTA', fixed: true } },
+    ]),
+    hand: [
+      { type: 'SPLITTER' },
+      { type: 'COLORFILTER', color: 'YELLOW' },
+      { type: 'COLORFILTER', color: 'MAGENTA' },
+      { type: 'MIRROR', mirror: 'BACK' },
+    ],
+  },
+  {
     id: 'master-1',
     name: 'Laser Labyrinth',
     description: 'Blockers are in your way. Find the path through the maze.',
