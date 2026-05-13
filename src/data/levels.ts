@@ -489,6 +489,26 @@ export const LEVELS: Level[] = [
     ],
   },
   {
+    id: 'strategy-8',
+    name: 'Filter Maze',
+    description: 'One white source must reach three differently-colored targets — one in each far corner. The filters are in your hand, but they only help once the beam is split.',
+    rows: 9,
+    cols: 9,
+    grid: g(9, 9, [
+      { r: 4, c: 0, piece: { type: 'SOURCE', color: 'WHITE', direction: 'RIGHT', fixed: true } },
+      { r: 4, c: 8, piece: { type: 'TARGET', color: 'WHITE', fixed: true } },
+      { r: 0, c: 8, piece: { type: 'TARGET', color: 'BLUE',  fixed: true } },
+      { r: 8, c: 0, piece: { type: 'TARGET', color: 'GREEN', fixed: true } },
+    ]),
+    hand: [
+      { type: 'SPLITTER' },
+      { type: 'COLORFILTER', color: 'BLUE' },
+      { type: 'COLORFILTER', color: 'GREEN' },
+      { type: 'MIRROR', mirror: 'FORWARD' },
+      { type: 'MIRROR', mirror: 'FORWARD' },
+    ],
+  },
+  {
     id: 'master-1',
     name: 'Laser Labyrinth',
     description: 'Blockers are in your way. Find the path through the maze.',
