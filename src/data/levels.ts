@@ -509,6 +509,27 @@ export const LEVELS: Level[] = [
     ],
   },
   {
+    id: 'strategy-9',
+    name: 'Double Prism',
+    description: 'Two white sources bracket the grid, each waiting to be split. Route all four resulting color arms to their targets — some go straight across, others need a single bounce.',
+    rows: 9,
+    cols: 9,
+    grid: g(9, 9, [
+      { r: 0, c: 0, piece: { type: 'SOURCE', color: 'WHITE', direction: 'RIGHT', fixed: true } },
+      { r: 8, c: 0, piece: { type: 'SOURCE', color: 'WHITE', direction: 'RIGHT', fixed: true } },
+      { r: 0, c: 8, piece: { type: 'TARGET', color: 'GREEN', fixed: true } },
+      { r: 3, c: 8, piece: { type: 'TARGET', color: 'RED',   fixed: true } },
+      { r: 5, c: 8, piece: { type: 'TARGET', color: 'BLUE',  fixed: true } },
+      { r: 8, c: 8, piece: { type: 'TARGET', color: 'GREEN', fixed: true } },
+    ]),
+    hand: [
+      { type: 'PRISM' },
+      { type: 'PRISM' },
+      { type: 'MIRROR', mirror: 'BACK' },
+      { type: 'MIRROR', mirror: 'FORWARD' },
+    ],
+  },
+  {
     id: 'master-1',
     name: 'Laser Labyrinth',
     description: 'Blockers are in your way. Find the path through the maze.',
