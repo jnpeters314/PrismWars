@@ -470,6 +470,25 @@ export const LEVELS: Level[] = [
     ],
   },
   {
+    id: 'strategy-7',
+    name: 'Prism Bounce',
+    description: 'Split the white beam. Green takes the direct path — red and blue must each bounce twice to meet at the same cell.',
+    rows: 8,
+    cols: 8,
+    grid: g(8, 8, [
+      { r: 4, c: 0, piece: { type: 'SOURCE', color: 'WHITE', direction: 'RIGHT', fixed: true } },
+      { r: 4, c: 6, piece: { type: 'TARGET', color: 'GREEN',   fixed: true } },
+      { r: 4, c: 7, piece: { type: 'TARGET', color: 'MAGENTA', fixed: true } },
+    ]),
+    hand: [
+      { type: 'PRISM' },
+      { type: 'MIRROR', mirror: 'FORWARD' },
+      { type: 'MIRROR', mirror: 'FORWARD' },
+      { type: 'MIRROR', mirror: 'BACK' },
+      { type: 'MIRROR', mirror: 'BACK' },
+    ],
+  },
+  {
     id: 'master-1',
     name: 'Laser Labyrinth',
     description: 'Blockers are in your way. Find the path through the maze.',
