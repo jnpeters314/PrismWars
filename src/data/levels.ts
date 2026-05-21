@@ -602,6 +602,31 @@ export const LEVELS: Level[] = [
       { type: 'MIRROR', mirror: 'BACK' },
     ],
   },
+  {
+    id: 'master-3',
+    name: 'Detour',
+    description: 'The direct path is sealed. The beam must go down, across, up, across again, and finally down to its target.',
+    rows: 9,
+    cols: 9,
+    grid: g(9, 9, [
+      { r: 0, c: 0, piece: { type: 'SOURCE',  color: 'RED', direction: 'RIGHT', fixed: true } },
+      { r: 8, c: 8, piece: { type: 'TARGET',  color: 'RED', fixed: true } },
+      { r: 0, c: 3, piece: { type: 'BLOCKER', fixed: true } },
+      { r: 0, c: 4, piece: { type: 'BLOCKER', fixed: true } },
+      { r: 5, c: 4, piece: { type: 'BLOCKER', fixed: true } },
+      { r: 8, c: 4, piece: { type: 'BLOCKER', fixed: true } },
+      { r: 8, c: 2, piece: { type: 'BLOCKER', fixed: true } },
+      { r: 5, c: 6, piece: { type: 'BLOCKER', fixed: true } },
+      { r: 3, c: 7, piece: { type: 'BLOCKER', fixed: true } },
+    ]),
+    hand: [
+      { type: 'MIRROR', mirror: 'BACK' },
+      { type: 'MIRROR', mirror: 'BACK' },
+      { type: 'MIRROR', mirror: 'BACK' },
+      { type: 'MIRROR', mirror: 'FORWARD' },
+      { type: 'MIRROR', mirror: 'FORWARD' },
+    ],
+  },
 ];
 
 export function getLevelById(id: string): Level | undefined {
